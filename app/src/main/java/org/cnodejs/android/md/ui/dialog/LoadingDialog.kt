@@ -23,7 +23,7 @@ class LoadingDialog : BaseDialog() {
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        return AppCompatDialog(context, R.style.Theme_App_Dialog_Loading).apply {
+        return AppCompatDialog(requireContext(), R.style.Theme_App_Dialog_Loading).apply {
             setContentView(R.layout.dialog_loading)
         }
     }
