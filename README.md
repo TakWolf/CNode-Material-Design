@@ -7,6 +7,7 @@
 [![Platform](https://img.shields.io/badge/platform-Android-green.svg)](https://www.android.com)
 [![API](https://img.shields.io/badge/API-14%2B-brightgreen.svg)](https://android-arsenal.com/api?level=14)
 [![License](https://img.shields.io/github/license/TakWolf/CNode-Material-Design.svg)](http://www.apache.org/licenses/LICENSE-2.0)
+[<img src="https://api.gitsponsors.com/api/badge/img?id=40091383" height="20">](https://api.gitsponsors.com/api/badge/link?p=CiYeWXNw843u4hyzGUxwuc4WM9hW6B6izL4cJHvqwXOYpzrEpHeZViUpKn1IcAoW2ZP4JgrR+CAwi7knHggNKFpcgwhBrvdbj84v0yKdF4tUVP3MtdJsTlMqgOz4+XFkByFJePvK02Uv4p/1vk6xEQ==)
 
 ![Logo](app/src/main/res/mipmap-xxxhdpi/ic_launcher.png)
 
