@@ -1,8 +1,8 @@
 pluginManagement {
     repositories {
-        gradlePluginPortal()
         google()
         mavenCentral()
+        gradlePluginPortal()
     }
 }
 
@@ -17,4 +17,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "CNode-Material-Design"
 
-include(":app")
+include("app")

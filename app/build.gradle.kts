@@ -6,12 +6,12 @@ plugins {
 
 android {
     namespace = "org.cnodejs.android.md"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "org.cnodejs.android.md"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "2.0.0"
 
@@ -30,6 +30,11 @@ android {
         }
     }
 
+    buildFeatures {
+        buildConfig = true
+        viewBinding = true
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -40,15 +45,10 @@ android {
         jvmTarget = "1.8"
     }
 
-    packagingOptions {
+    packaging {
         resources {
-            excludes.add("DebugProbesKt.bin")
+            excludes += "DebugProbesKt.bin"
         }
-    }
-
-    buildFeatures {
-        viewBinding = true
-        buildConfig = true
     }
 }
 
