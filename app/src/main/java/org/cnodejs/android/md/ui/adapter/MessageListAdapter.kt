@@ -19,17 +19,14 @@ import org.cnodejs.android.md.util.loadThumb
 import org.cnodejs.android.md.util.setSharedName
 import org.cnodejs.android.md.util.timeSpanStringFromNow
 
-class MessageListAdapter(
-    private val layoutInflater: LayoutInflater,
-    private val who: String,
-) : ListAdapter<Message, MessageListAdapter.ViewHolder>(MessageDiffItemCallback) {
+class MessageListAdapter(private val who: String) : ListAdapter<Message, MessageListAdapter.ViewHolder>(MessageDiffItemCallback) {
     var onMessageReadListener: ((messageId: String) -> Unit)? = null
     var onTopicClickListener: OnTopicClickListener? = null
     var onUserClickListener: OnUserClickListener? = null
     var onImageClickListener: OnImageClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ItemMessageBinding.inflate(layoutInflater, parent, false)
+        val binding = ItemMessageBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding, who)
     }
 

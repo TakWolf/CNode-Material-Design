@@ -9,7 +9,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.FragmentNavigator
 import org.cnodejs.android.md.R
-import java.util.*
+import java.util.UUID
 
 enum class NavAnim(
     @AnimRes @AnimatorRes internal val enterAnim: Int = -1,

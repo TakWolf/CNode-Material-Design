@@ -66,7 +66,7 @@ class MessageListFragment : BaseFragment() {
             messageListViewModel.loadMessages()
         }
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
-        val adapter = MessageListAdapter(inflater, who).apply {
+        val adapter = MessageListAdapter(who).apply {
             onMessageReadListener = { messageId ->
                 messageListViewModel.markMessageRead(messageId)
             }

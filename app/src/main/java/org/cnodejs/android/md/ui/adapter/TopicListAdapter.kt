@@ -9,20 +9,16 @@ import org.cnodejs.android.md.R
 import org.cnodejs.android.md.databinding.ItemTopicBinding
 import org.cnodejs.android.md.model.entity.Topic
 import org.cnodejs.android.md.ui.listener.OnImageClickListener
-import org.cnodejs.android.md.ui.listener.OnTopicClickListener
 import org.cnodejs.android.md.util.loadAvatar
 import org.cnodejs.android.md.util.loadThumb
 import org.cnodejs.android.md.util.setSharedName
 import org.cnodejs.android.md.util.timeSpanStringFromNow
 
-class TopicListAdapter(
-    private val layoutInflater: LayoutInflater,
-    private val who: String,
-) : ITopicListAdapter<Topic, TopicListAdapter.ViewHolder>(TopicDiffItemCallback) {
+class TopicListAdapter(private val who: String) : ITopicListAdapter<Topic, TopicListAdapter.ViewHolder>(TopicDiffItemCallback) {
     var onImageClickListener: OnImageClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ItemTopicBinding.inflate(layoutInflater, parent, false)
+        val binding = ItemTopicBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding, who)
     }
 

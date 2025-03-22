@@ -20,7 +20,11 @@ import org.cnodejs.android.md.model.entity.Tab
 import org.cnodejs.android.md.ui.adapter.TopicListAdapter
 import org.cnodejs.android.md.ui.dialog.LogoutAlertDialog
 import org.cnodejs.android.md.ui.dialog.NeedLoginAlertDialog
-import org.cnodejs.android.md.ui.listener.*
+import org.cnodejs.android.md.ui.listener.ImagePreviewNavigateListener
+import org.cnodejs.android.md.ui.listener.OnDoubleClickListener
+import org.cnodejs.android.md.ui.listener.TopicDetailNavigateListener
+import org.cnodejs.android.md.ui.listener.UserDetailNavigateListener
+import org.cnodejs.android.md.ui.listener.listenToRecyclerView
 import org.cnodejs.android.md.ui.widget.LoadMoreFooter
 import org.cnodejs.android.md.util.loadAvatar
 import org.cnodejs.android.md.util.setSharedName
@@ -74,9 +78,9 @@ class MainFragment : BaseFragment() {
 
         binding.contentLayout.refreshLayout.setColorSchemeColors(colorAccent)
         binding.contentLayout.recyclerView.layoutManager = LinearLayoutManager(context)
-        val loadMoreFooter = LoadMoreFooter.create(inflater, binding.contentLayout.recyclerView)
+        val loadMoreFooter = LoadMoreFooter.create(binding.contentLayout.recyclerView)
         loadMoreFooter.addToRecyclerView(binding.contentLayout.recyclerView)
-        val adapter = TopicListAdapter(inflater, who).apply {
+        val adapter = TopicListAdapter(who).apply {
             onTopicClickListener = TopicDetailNavigateListener(navigator)
             onUserClickListener = UserDetailNavigateListener(navigator)
             onImageClickListener = ImagePreviewNavigateListener(navigator)

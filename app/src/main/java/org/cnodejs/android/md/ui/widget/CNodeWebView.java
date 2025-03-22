@@ -2,7 +2,6 @@ package org.cnodejs.android.md.ui.widget;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.AttributeSet;
@@ -12,7 +11,6 @@ import android.webkit.WebViewClient;
 import androidx.annotation.AttrRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.annotation.StyleRes;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -167,7 +165,6 @@ public class CNodeWebView extends WebView {
             readValues(source, null);
         }
 
-        @RequiresApi(Build.VERSION_CODES.N)
         public SavedState(Parcel source, ClassLoader loader) {
             super(source, loader);
             readValues(source, loader);
@@ -188,11 +185,7 @@ public class CNodeWebView extends WebView {
         public static final Creator<SavedState> CREATOR = new ClassLoaderCreator<SavedState>() {
             @Override
             public SavedState createFromParcel(Parcel source, ClassLoader loader) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                    return new SavedState(source, loader);
-                } else {
-                    return new SavedState(source);
-                }
+                return new SavedState(source, loader);
             }
 
             @Override

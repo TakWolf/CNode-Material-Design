@@ -6,7 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.ListAdapter
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.takwolf.android.hfrecyclerview.loadmorefooter.LoadMoreFooter
+import com.takwolf.android.hfrecyclerview.paging.LoadMoreFooter
+import com.takwolf.android.hfrecyclerview.paging.LoadMoreState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -15,7 +16,7 @@ abstract class PagingLiveHolder<Entity, PagingParams>(
     private val toastHolder: ToastLiveHolder,
 ) : ListLiveHolder<Entity>() {
     val refreshStateData = MutableLiveData(false)
-    val loadMoreStateData = MutableLiveData(LoadMoreFooter.STATE_DISABLED)
+    val loadMoreStateData = MutableLiveData(LoadMoreState.DISABLED)
 
     private var dataVersion = 0
     private var isRefreshDoing = false
@@ -46,7 +47,7 @@ abstract class PagingLiveHolder<Entity, PagingParams>(
                 isRefreshDoing = false
                 refreshStateData.value = false
                 isLoadMoreDoing = false
-                loadMoreStateData.value = if (isFinished) LoadMoreFooter.STATE_FINISHED else LoadMoreFooter.STATE_ENDLESS
+                loadMoreStateData.value = if (isFinished) LoadMoreState.FINISHED else LoadMoreState.IDLE
             }
         }
     }
@@ -64,7 +65,7 @@ abstract class PagingLiveHolder<Entity, PagingParams>(
     fun loadMore() {
         if (!isLoadMoreDoing && !isFinished) {
             val version = dataVersion
-            loadMoreStateData.value = LoadMoreFooter.STATE_LOADING
+            loadMoreStateData.value = LoadMoreState.LOADING
             isLoadMoreDoing = true
             viewModel.viewModelScope.launch(Dispatchers.IO) {
                 doLoadMore(version, pagingParams!!)
@@ -81,7 +82,7 @@ abstract class PagingLiveHolder<Entity, PagingParams>(
                 this@PagingLiveHolder.pagingParams = pagingParams
                 this@PagingLiveHolder.isFinished = isFinished
                 isLoadMoreDoing = false
-                loadMoreStateData.value = if (isFinished) LoadMoreFooter.STATE_FINISHED else LoadMoreFooter.STATE_ENDLESS
+                loadMoreStateData.value = if (isFinished) LoadMoreState.FINISHED else LoadMoreState.IDLE
             }
         }
     }
@@ -90,7 +91,7 @@ abstract class PagingLiveHolder<Entity, PagingParams>(
         viewModel.viewModelScope.launch(Dispatchers.Main) {
             if (dataVersion == version) {
                 isLoadMoreDoing = false
-                loadMoreStateData.value = LoadMoreFooter.STATE_FAILED
+                loadMoreStateData.value = LoadMoreState.FAILED
                 toastHolder.showToast(message)
             }
         }
@@ -103,7 +104,7 @@ abstract class PagingLiveHolder<Entity, PagingParams>(
         pagingParams = null
         isFinished = false
         refreshStateData.value = false
-        loadMoreStateData.value = LoadMoreFooter.STATE_DISABLED
+        loadMoreStateData.value = LoadMoreState.DISABLED
         clearList()
     }
 }
@@ -117,7 +118,7 @@ fun <Entity> PagingLiveHolder<Entity, *>.setupView(
     refreshLayout.setOnRefreshListener {
         refresh()
     }
-    loadMoreFooter.setOnLoadMoreListener {
+    loadMoreFooter.onLoadMoreListener = LoadMoreFooter.OnLoadMoreListener {
         loadMore()
     }
     setupView(owner, adapter)

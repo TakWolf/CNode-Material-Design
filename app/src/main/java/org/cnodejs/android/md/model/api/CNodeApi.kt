@@ -1,7 +1,23 @@
 package org.cnodejs.android.md.model.api
 
-import org.cnodejs.android.md.model.entity.*
-import retrofit2.http.*
+import org.cnodejs.android.md.model.entity.ApiResult
+import org.cnodejs.android.md.model.entity.DataResult
+import org.cnodejs.android.md.model.entity.LoginResult
+import org.cnodejs.android.md.model.entity.MessageData
+import org.cnodejs.android.md.model.entity.MessageMarkedResult
+import org.cnodejs.android.md.model.entity.MessagesMarkedAllResult
+import org.cnodejs.android.md.model.entity.ReplyIdResult
+import org.cnodejs.android.md.model.entity.Topic
+import org.cnodejs.android.md.model.entity.TopicDetail
+import org.cnodejs.android.md.model.entity.TopicIdResult
+import org.cnodejs.android.md.model.entity.UpReplyResult
+import org.cnodejs.android.md.model.entity.User
+import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
+import retrofit2.http.POST
+import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface CNodeApi {
     companion object {

@@ -27,7 +27,7 @@ enum class Tab(@StringRes val titleId: Int, @IdRes val tabId: Int) {
 
     companion object {
         fun fromTabId(@IdRes tabId: Int): Tab {
-            for (tab in values()) {
+            for (tab in entries) {
                 if (tab.tabId == tabId) {
                     return tab
                 }

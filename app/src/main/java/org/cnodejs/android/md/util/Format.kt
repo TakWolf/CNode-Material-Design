@@ -1,6 +1,6 @@
 package org.cnodejs.android.md.util
 
-import java.util.*
+import java.util.UUID
 
 fun String.isAccessToken(): Boolean {
     return try {

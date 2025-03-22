@@ -13,7 +13,7 @@ import org.cnodejs.android.md.util.setSharedName
 import org.cnodejs.android.md.util.showToast
 import org.cnodejs.android.md.vm.holder.ILoadingViewModel
 import org.cnodejs.android.md.vm.holder.IToastViewModel
-import java.util.*
+import java.util.UUID
 
 abstract class BaseFragment : Fragment(), NavControllerProvider {
     companion object {
