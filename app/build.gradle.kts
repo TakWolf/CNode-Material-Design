@@ -6,12 +6,12 @@ plugins {
 
 android {
     namespace = "org.cnodejs.android.md"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "org.cnodejs.android.md"
         minSdk = 24
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 1
         versionName = "2.0.0"
 
