@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -6,7 +8,9 @@ plugins {
 
 android {
     namespace = "org.cnodejs.android.md"
-    compileSdk = 36
+    compileSdk {
+        version = release(36)
+    }
 
     defaultConfig {
         applicationId = "org.cnodejs.android.md"
@@ -41,14 +45,16 @@ android {
         isCoreLibraryDesugaringEnabled = true
     }
 
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-
     packaging {
         resources {
             excludes += "DebugProbesKt.bin"
         }
+    }
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget = JvmTarget.JVM_1_8
     }
 }
 
@@ -57,24 +63,24 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
     implementation("androidx.core:core-ktx:1.17.0")
     implementation("androidx.appcompat:appcompat:1.7.1")
-    implementation("androidx.activity:activity-ktx:1.11.0")
+    implementation("androidx.activity:activity-ktx:1.12.2")
     implementation("androidx.fragment:fragment-ktx:1.8.9")
-    implementation("androidx.navigation:navigation-fragment-ktx:2.9.5")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.9.6")
     implementation("androidx.constraintlayout:constraintlayout:2.2.1")
-    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.2.0")
     implementation("androidx.recyclerview:recyclerview:1.4.0")
     implementation("androidx.cardview:cardview:1.0.0")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.4")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.9.4")
-    implementation("androidx.datastore:datastore:1.1.7")
-    implementation("androidx.datastore:datastore-preferences:1.1.7")
-    implementation("androidx.camera:camera-camera2:1.5.1")
-    implementation("androidx.camera:camera-lifecycle:1.5.1")
-    implementation("androidx.camera:camera-view:1.5.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.10.0")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.10.0")
+    implementation("androidx.datastore:datastore:1.2.0")
+    implementation("androidx.datastore:datastore-preferences:1.2.0")
+    implementation("androidx.camera:camera-camera2:1.5.2")
+    implementation("androidx.camera:camera-lifecycle:1.5.2")
+    implementation("androidx.camera:camera-view:1.5.2")
     implementation("com.google.android.material:material:1.13.0")
     implementation("com.squareup.moshi:moshi:1.15.2")
     ksp("com.squareup.moshi:moshi-kotlin-codegen:1.15.2")
-    implementation(platform("com.squareup.okhttp3:okhttp-bom:5.2.1"))
+    implementation(platform("com.squareup.okhttp3:okhttp-bom:5.3.2"))
     implementation("com.squareup.okhttp3:okhttp")
     implementation("com.squareup.okhttp3:logging-interceptor")
     implementation("com.squareup.retrofit2:retrofit:3.0.0")
@@ -95,8 +101,8 @@ dependencies {
     implementation("org.commonmark:commonmark-ext-task-list-items:0.27.0")
     implementation("com.github.TakWolf.Android-HeaderAndFooterRecyclerView:hfrecyclerview:0.0.18")
     implementation("com.github.TakWolf.Android-HeaderAndFooterRecyclerView:paging:0.0.18")
-    implementation("com.github.TakWolf.Android-InsetsWidget:insetswidget:0.0.1")
-    implementation("com.github.TakWolf.Android-InsetsWidget:constraintlayout:0.0.1")
+    implementation("com.github.TakWolf.Android-InsetsWidget:insetswidget:0.0.3")
+    implementation("com.github.TakWolf.Android-InsetsWidget:constraintlayout:0.0.3")
     implementation("com.github.hadilq:live-event:1.3.0")
     implementation("com.google.mlkit:barcode-scanning:17.3.0")
 }
