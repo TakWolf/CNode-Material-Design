@@ -16,7 +16,7 @@ android {
         applicationId = "org.cnodejs.android.md"
         minSdk = 24
         targetSdk = 36
-        versionCode = 1
+        versionCode = 20251222
         versionName = "2.0.0"
 
         buildConfigField("String", "HOST_BASE_URL", "\"https://cnodejs.org\"")
